@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  project-nova-front:
+    build: ./project-nova-front
+    container_name: project-nova-front
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL= http://localhost:3000/api
+
+    restart: always
+
+  project-nova-front-admin:
+    build: ./project-nova-front-admin
+    container_name: project-nova-front-admin
+    ports:
+      - "8080:8080"
+    environment:
+      - VUE_APP_API_URL=http://localhost:3000/api
+
+    restart: always
+
+  project-nova-back:
+    image: project-nova-back:1.0.0
+    build: ./project-nova-back 
+    ports:
+      - '${PORT}:${PORT}'
+    command: npm run start:dev:docker
+    environment:
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - FRONTEND_URLS=${FRONTEND_URLS}
