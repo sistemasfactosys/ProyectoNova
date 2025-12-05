@@ -1,0 +1,9 @@
+[submodule "project-nova-front"]
+	path = project-nova-front
+	url = https://github.com/sistemasfactosys/project-nova-front.git
+[submodule "project-nova-front-admin"]
+	path = project-nova-front-admin
+	url = https://github.com/sistemasfactosys/project-nova-front-admin.git
+[submodule "project-nova-back"]
+	path = project-nova-back
+	url = https://github.com/sistemasfactosys/project-nova-back.git
